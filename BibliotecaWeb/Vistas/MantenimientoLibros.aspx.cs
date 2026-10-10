@@ -34,6 +34,14 @@ namespace BibliotecaWeb.Vistas
         {
             try
             {
+                Page.Validate("GuardarLibro");
+
+                if (!Page.IsValid)
+                {
+                    return;
+                }
+
+
                 if (string.IsNullOrWhiteSpace(txtTitulo.Text) ||
                     string.IsNullOrWhiteSpace(txtAutor.Text) ||
                     string.IsNullOrWhiteSpace(txtISBN.Text) ||

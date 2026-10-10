@@ -44,6 +44,16 @@
                         ClientIDMode="Static"
                         MaxLength="200"
                         CssClass="entrada" />
+                    
+                    <asp:RequiredFieldValidator
+                        ID="rfvTitulo"
+                        runat="server"
+                        ControlToValidate="txtTitulo"
+                        ErrorMessage="El título es obligatorio."
+                        Display="Dynamic"
+                        CssClass="mensaje-error"
+                        ValidationGroup="GuardarLibro" />
+
                 </div>
 
                 <div class="campo-formulario">
@@ -128,6 +138,7 @@
                     runat="server"
                     Text="Guardar libro"
                     CssClass="boton boton-guardar"
+                    ValidationGroup="GuardarLibro"
                     OnClick="btnGuardar_Click" />
 
                 <asp:Button ID="btnLimpiar"
