@@ -1,6 +1,6 @@
 ﻿
 <%@ Page Language="C#" AutoEventWireup="true"
-    CodeBehind="Libros.aspx.cs"
+    CodeBehind="MantenimientoLibros.aspx.cs"
     Inherits="BibliotecaWeb.Vistas.Libros" %>
 
 <!DOCTYPE html>
@@ -151,6 +151,19 @@
 
                 <h2>Buscar Libros</h2>
 
+
+                <asp:DropDownList
+                    ID="ddlTipoBusqueda"
+                    runat="server"
+                    CssClass="entrada"
+                    ClientIDMode="Static">
+                    <asp:ListItem Text="Todos los libros" Value="Todos" />
+                    <asp:ListItem Text="Buscar por título" Value="Titulo" />
+                    <asp:ListItem Text="Buscar por ISBN" Value="ISBN" />
+                </asp:DropDownList>
+
+
+
                 <asp:TextBox ID="txtBuscar"
                     runat="server"
                     CssClass="entrada"
@@ -180,6 +193,7 @@
                 <h2>Listado de Libros</h2>
 
                 <div style="overflow-x:auto;">
+                    <div class="tabla-responsive">
 
                     <asp:GridView ID="gvLibros"
                         runat="server"
@@ -188,8 +202,12 @@
                         CssClass="tabla-libros"
                         EmptyDataText="No hay libros para mostrar."
                         OnRowCommand="gvLibros_RowCommand">
+                       
 
                         <Columns>
+
+
+
 
                             <asp:BoundField
                                 DataField="IdLibro"
@@ -210,6 +228,31 @@
                             <asp:BoundField
                                 DataField="CantidadDisponible"
                                 HeaderText="Cantidad" />
+
+                            <asp:BoundField
+                                DataField="Editorial"
+                                HeaderText="Editorial" />
+
+                            <asp:BoundField
+                                DataField="AnioPublicacion"
+                                HeaderText="Año de publicación" />
+
+                            <asp:BoundField
+                                DataField="Categoria"
+                                HeaderText="Categoría" />
+
+                            <asp:BoundField
+                                DataField="UsuarioAgrego"
+                                HeaderText="Registrado por" />
+
+                            <asp:BoundField
+                                DataField="FechaAdicion"
+                                HeaderText="Fecha de registro"
+                                DataFormatString="{0:dd/MM/yyyy HH:mm}"
+                                HtmlEncode="false" />
+
+
+
 
                             <asp:TemplateField HeaderText="Acciones">
                                 <ItemTemplate>
@@ -237,6 +280,7 @@
                         </Columns>
 
                     </asp:GridView>
+                         </div>
 
                 </div>
 

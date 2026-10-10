@@ -147,3 +147,39 @@ h1, h2, h3 {
     color: var(--naranja);
     font-weight: bold;
 }
+
+
+/* Tabla adaptable a dispositivos pequeños */
+.tabla-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+    .tabla-responsive .tabla-libros {
+        min-width: 950px;
+    }
+
+/* Ajustes para tabletas y celulares */
+@media screen and (max-width: 768px) {
+
+    .contenedor-biblioteca {
+        width: auto;
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .formulario-libro {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .entrada {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .boton {
+        margin-bottom: 5px;
+    }
+}

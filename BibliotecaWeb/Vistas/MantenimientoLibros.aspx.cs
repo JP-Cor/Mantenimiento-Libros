@@ -125,28 +125,42 @@ namespace BibliotecaWeb.Vistas
         }
 
         // Buscar por título o ISBN
+
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
+                string tipoBusqueda = ddlTipoBusqueda.SelectedValue;
                 string criterio = txtBuscar.Text.Trim();
 
-                if (string.IsNullOrWhiteSpace(criterio))
+                if (tipoBusqueda == "Todos")
                 {
                     CargarLibros();
+                    lblMensaje.Text = "";
                     return;
                 }
 
-                List<Libro> libros =
-                    repositorio.BuscarLibrosPorTitulo(criterio);
-
-                Libro libroISBN =
-                    repositorio.BuscarLibroPorISBN(criterio);
-
-                if (libroISBN != null &&
-                    !libros.Exists(x => x.IdLibro == libroISBN.IdLibro))
+                if (string.IsNullOrWhiteSpace(criterio))
                 {
-                    libros.Add(libroISBN);
+                    MostrarMensaje(
+                        "Ingrese un criterio de búsqueda.", false);
+                    return;
+                }
+
+                List<Libro> libros = new List<Libro>();
+
+                if (tipoBusqueda == "Titulo")
+                {
+                    libros = repositorio.BuscarLibrosPorTitulo(criterio);
+                }
+                else if (tipoBusqueda == "ISBN")
+                {
+                    Libro libro = repositorio.BuscarLibroPorISBN(criterio);
+
+                    if (libro != null)
+                    {
+                        libros.Add(libro);
+                    }
                 }
 
                 gvLibros.DataSource = libros;
@@ -169,12 +183,14 @@ namespace BibliotecaWeb.Vistas
             }
         }
 
+
         // Mostrar todos
         protected void btnMostrarTodos_Click(
             object sender, EventArgs e)
         {
             try
             {
+                ddlTipoBusqueda.SelectedValue = "Todos";
                 txtBuscar.Text = "";
                 CargarLibros();
                 lblMensaje.Text = "";
