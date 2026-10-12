@@ -189,14 +189,8 @@ Se recomienda trabajar con ramas independientes, realizar commits descriptivos y
 
 La profesora debe agregarse al repositorio privado mediante el usuario de GitHub `Thatyana1997`.
 
-## 10. Entrega
 
-**Fecha límite:** 13 de octubre de 2026, a las 9:00 p. m.
 
-**Valor:** 7%.
-
-El proyecto debe incluir el código fuente, script SQL, archivos de configuración, estilos y evidencias de trabajo colaborativo.
-
-## 11. Repositorio
+## 10. Repositorio
 
 https://github.com/JP-Cor/Mantenimiento-Libros
