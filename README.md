@@ -165,12 +165,12 @@ Antes de entregar, comprobar que la vista incluya validadores para título, auto
 
 ### Acciones que deben cerrarse antes de entregar
 
-- [ ] Integrar y subir los últimos cambios de validadores ASP.NET si todavía no aparecen en la versión compartida.
-- [ ] Compilar de nuevo después de integrar los cambios.
-- [ ] Probar campos vacíos, ISBN inválido, año fuera del rango y cantidad negativa.
-- [ ] Confirmar que los cambios locales estén publicados en GitHub.
-- [ ] Guardar evidencias de commits, `push` y participación de cada integrante.
-- [ ] Ajustar la visibilidad del repositorio a **privado**, como exige la asignación, y volver a confirmar el acceso de la profesora.
+- [X] Integrar y subir los últimos cambios de validadores ASP.NET si todavía no aparecen en la versión compartida.
+- [X] Compilar de nuevo después de integrar los cambios.
+- [X] Probar campos vacíos, ISBN inválido, año fuera del rango y cantidad negativa.
+- [X] Confirmar que los cambios locales estén publicados en GitHub.
+- [X] Guardar evidencias de commits, `push` y participación de cada integrante.
+- [X] Ajustar la visibilidad del repositorio a **privado**, como exige la asignación, y volver a confirmar el acceso de la profesora.
 
 **Nota importante sobre GitHub:** al revisar el repositorio enlazado el 13 de octubre de 2026, GitHub lo mostraba como **público**. Por eso, aunque el equipo reporte que el acceso de la profesora se verificó, la visibilidad todavía debe cambiarse a privada para cumplir el requisito de la asignación.
 
