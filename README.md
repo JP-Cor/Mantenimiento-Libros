@@ -175,9 +175,9 @@ El sistema incluye validaciones en C# para comprobar campos obligatorios, año d
 ### Pendiente de finalizar o verificar
 
 - Completar validadores ASP.NET.
-- Realizar pruebas finales de validación y diseño adaptable.
-- Verificar la instalación en otra computadora.
-- Confirmar los colaboradores y el acceso de la profesora en GitHub.
+- Realizar pruebas finales de validación y diseño adaptable COMPROBADO
+- Verificar la instalación en otra computadora COMPROBADO
+- Confirmar los colaboradores y el acceso de la profesora en GitHub COMPROBADO
 - Publicar los últimos cambios locales.
 - Preparar evidencias de commits y participación de los integrantes.
 
