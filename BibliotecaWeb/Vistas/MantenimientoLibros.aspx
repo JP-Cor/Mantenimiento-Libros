@@ -1,4 +1,4 @@
-﻿
+
 <%@ Page Language="C#" AutoEventWireup="true"
     CodeBehind="MantenimientoLibros.aspx.cs"
     Inherits="BibliotecaWeb.Vistas.Libros" %>
@@ -27,7 +27,7 @@
 
         <main class="contenedor-biblioteca">
 
-            <h2>Registro de Libros</h2>
+            <h2><asp:Label ID="lblTituloFormulario" runat="server" Text="Registro de Libros" /></h2>
 
             <asp:HiddenField ID="hfIdLibro"
                 runat="server" />
@@ -52,7 +52,8 @@
                         ErrorMessage="El título es obligatorio."
                         Display="Dynamic"
                         CssClass="mensaje-error"
-                        ValidationGroup="GuardarLibro" />
+                        ValidationGroup="GuardarLibro"
+                        SetFocusOnError="true" />
 
                 </div>
 
@@ -65,6 +66,16 @@
                         ClientIDMode="Static"
                         MaxLength="150"
                         CssClass="entrada" />
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvAutor"
+                        runat="server"
+                        ControlToValidate="txtAutor"
+                        ErrorMessage="El autor es obligatorio."
+                        Display="Dynamic"
+                        CssClass="mensaje-error"
+                        ValidationGroup="GuardarLibro"
+                        SetFocusOnError="true" />
                 </div>
 
                 <div class="campo-formulario">
@@ -76,6 +87,27 @@
                         ClientIDMode="Static"
                         MaxLength="13"
                         CssClass="entrada" />
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvISBN"
+                        runat="server"
+                        ControlToValidate="txtISBN"
+                        ErrorMessage="El ISBN es obligatorio."
+                        Display="Dynamic"
+                        CssClass="mensaje-error"
+                        ValidationGroup="GuardarLibro"
+                        SetFocusOnError="true" />
+
+                    <asp:RegularExpressionValidator
+                        ID="revISBN"
+                        runat="server"
+                        ControlToValidate="txtISBN"
+                        ValidationExpression="^\d{13}$"
+                        ErrorMessage="El ISBN debe contener exactamente 13 dígitos."
+                        Display="Dynamic"
+                        CssClass="mensaje-error"
+                        ValidationGroup="GuardarLibro"
+                        SetFocusOnError="true" />
                 </div>
 
                 <div class="campo-formulario">
@@ -98,6 +130,52 @@
                         ClientIDMode="Static"
                         TextMode="Number"
                         CssClass="entrada" />
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvAnio"
+                        runat="server"
+                        ControlToValidate="txtAnio"
+                        ErrorMessage="El año de publicación es obligatorio."
+                        Display="Dynamic"
+                        CssClass="mensaje-error"
+                        ValidationGroup="GuardarLibro"
+                        SetFocusOnError="true" />
+
+                    <asp:RegularExpressionValidator
+                        ID="revAnio"
+                        runat="server"
+                        ControlToValidate="txtAnio"
+                        ValidationExpression="^\d+$"
+                        ErrorMessage="Ingrese un año utilizando solo números enteros."
+                        Display="Dynamic"
+                        CssClass="mensaje-error"
+                        ValidationGroup="GuardarLibro"
+                        SetFocusOnError="true" />
+
+                    <asp:RangeValidator
+                        ID="rngAnio"
+                        runat="server"
+                        ControlToValidate="txtAnio"
+                        Type="Integer"
+                        MinimumValue="1450"
+                        MaximumValue="2100"
+                        ErrorMessage="El año debe estar entre 1450 y 2100."
+                        Display="Dynamic"
+                        CssClass="mensaje-error"
+                        ValidationGroup="GuardarLibro"
+                        SetFocusOnError="true" />
+
+                    <asp:CustomValidator
+                        ID="cvAnioActual"
+                        runat="server"
+                        ControlToValidate="txtAnio"
+                        OnServerValidate="cvAnioActual_ServerValidate"
+                        ValidateEmptyText="false"
+                        ErrorMessage="El año no puede ser mayor que el año actual."
+                        Display="Dynamic"
+                        CssClass="mensaje-error"
+                        ValidationGroup="GuardarLibro"
+                        SetFocusOnError="true" />
                 </div>
 
                 <div class="campo-formulario">
@@ -120,6 +198,40 @@
                         ClientIDMode="Static"
                         TextMode="Number"
                         CssClass="entrada" />
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvCantidad"
+                        runat="server"
+                        ControlToValidate="txtCantidad"
+                        ErrorMessage="La cantidad disponible es obligatoria."
+                        Display="Dynamic"
+                        CssClass="mensaje-error"
+                        ValidationGroup="GuardarLibro"
+                        SetFocusOnError="true" />
+
+                    <asp:RegularExpressionValidator
+                        ID="revCantidad"
+                        runat="server"
+                        ControlToValidate="txtCantidad"
+                        ValidationExpression="^\d+$"
+                        ErrorMessage="La cantidad debe ser un número entero no negativo."
+                        Display="Dynamic"
+                        CssClass="mensaje-error"
+                        ValidationGroup="GuardarLibro"
+                        SetFocusOnError="true" />
+
+                    <asp:RangeValidator
+                        ID="rngCantidad"
+                        runat="server"
+                        ControlToValidate="txtCantidad"
+                        Type="Integer"
+                        MinimumValue="0"
+                        MaximumValue="2147483647"
+                        ErrorMessage="La cantidad debe ser igual o mayor que cero."
+                        Display="Dynamic"
+                        CssClass="mensaje-error"
+                        ValidationGroup="GuardarLibro"
+                        SetFocusOnError="true" />
                 </div>
 
                 <div class="campo-formulario">
@@ -131,6 +243,16 @@
                         ClientIDMode="Static"
                         MaxLength="100"
                         CssClass="entrada" />
+
+                    <asp:RequiredFieldValidator
+                        ID="rfvUsuario"
+                        runat="server"
+                        ControlToValidate="txtUsuario"
+                        ErrorMessage="El usuario responsable es obligatorio."
+                        Display="Dynamic"
+                        CssClass="mensaje-error"
+                        ValidationGroup="GuardarLibro"
+                        SetFocusOnError="true" />
                 </div>
 
                 <!-- BOTONES -->
@@ -186,12 +308,14 @@
                         runat="server"
                         Text="Buscar"
                         CssClass="boton boton-buscar"
+                        CausesValidation="false"
                         OnClick="btnBuscar_Click" />
 
                     <asp:Button ID="btnMostrarTodos"
                         runat="server"
                         Text="Mostrar todos"
                         CssClass="boton boton-editar"
+                        CausesValidation="false"
                         OnClick="btnMostrarTodos_Click" />
 
                 </div>
@@ -274,6 +398,7 @@
                                         Text="Editar"
                                         CssClass="boton boton-editar"
                                         CommandName="EditarLibro"
+                                        CausesValidation="false"
                                         CommandArgument='<%# Eval("IdLibro") %>' />
 
                                     <asp:LinkButton
@@ -282,6 +407,7 @@
                                         Text="Eliminar"
                                         CssClass="boton boton-eliminar"
                                         CommandName="EliminarLibro"
+                                        CausesValidation="false"
                                         CommandArgument='<%# Eval("IdLibro") %>'
                                         OnClientClick="return confirm('¿Desea eliminar este libro?');" />
 
